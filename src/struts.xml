@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts
+Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+    <constant name="struts.convention.result.path" value="/"></constant>
+
+
+    <!--<include file="login.xml"></include>-->
+    <package name="aa" extends="struts-default" namespace="/">
+
+        <interceptors>
+            <interceptor name="authentication"
+                         class="Interceptor.AuthenticationInterceptor"></interceptor>
+            <interceptor-stack name="authStack">
+                <interceptor-ref name="authentication"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="authStack"></default-interceptor-ref>
+
+        <global-results>
+            <result name="login" type="redirect">home.action</result>
+        </global-results>
+
+        <action name="home">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result>/login.jsp</result>
+        </action>
+        <action name="welcome" class="actions.WelcomeAction">
+            <result name="success">/welcome.jsp</result>
+        </action>
+        <action name="login" class="actions.loginAction">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/welcome.jsp</result>
+            <result name="error">/login.jsp</result>
+            <result name="input">/login.jsp</result>
+            <result name="login">/login.jsp</result>
+
+        </action>
+
+        <action name="signUp" class="actions.signUpAction">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="success">/login.jsp</result>
+            <result name="error">/signUp.jsp</result>
+            <result name="input">/signUp.jsp</result>
+            <result name="login">/login.jsp</result>
+
+        </action>
+
+
+    </package>
+
+
+</struts>
