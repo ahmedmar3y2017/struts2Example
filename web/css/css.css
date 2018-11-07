@@ -5,7 +5,12 @@
 /*
  * General styles
  */
-
+.modal-notify .modal-header {
+    border-radius: 3px 3px 0 0;
+}
+.modal-notify .modal-content {
+    border-radius: 3px;
+}
 body, html{
     height: 100%;
     background-repeat: no-repeat;

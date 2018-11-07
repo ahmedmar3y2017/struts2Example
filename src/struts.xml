@@ -6,6 +6,29 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
     <constant name="struts.convention.result.path" value="/"></constant>
 
+    <constant name="struts.devMode" value="true"></constant>
+    <!--<constant name="struts.action.extension" value="html"></constant>-->
+
+    <!--<package name="default" extends="json-default">-->
+
+    <!--</package>-->
+    <package name="default" extends="json-default">
+
+        <action name="getmydata" class="actions.getAllTasksAction">
+            <result name="SUCCESS" type="json">/welcome.jsp</result>
+        </action>
+
+        <action name="deleteTask" class="actions.deleteTaskAction">
+            <result name="SUCCESS" type="json">/welcome.jsp</result>
+        </action>
+
+        <action name="saveTask" class="actions.insertTaskAction">
+
+            <result name="SUCCESS" type="json">/welcome.jsp</result>
+
+        </action>
+
+    </package>
 
     <!--<include file="login.xml"></include>-->
     <package name="aa" extends="struts-default" namespace="/">
@@ -14,6 +37,11 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
             <interceptor name="authentication"
                          class="Interceptor.AuthenticationInterceptor"></interceptor>
             <interceptor-stack name="authStack">
+
+                <!--<interceptor-ref name="json">-->
+                <!--<param name="enableSMD"></param>-->
+                <!--</interceptor-ref>-->
+
                 <interceptor-ref name="authentication"></interceptor-ref>
                 <interceptor-ref name="defaultStack"></interceptor-ref>
             </interceptor-stack>
@@ -23,6 +51,7 @@ Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
         <global-results>
             <result name="login" type="redirect">home.action</result>
         </global-results>
+
 
         <action name="home">
             <interceptor-ref name="defaultStack"></interceptor-ref>

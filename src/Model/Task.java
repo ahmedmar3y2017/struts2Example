@@ -1,20 +1,29 @@
 package Model;
 
-import java.util.Date;
 
 public class Task {
 
     private int id;
     private String taskName ;
-    private Date begin;
-    private Date end ;
+    private String begin;
+    private String end ;
     private String desc;
     private String manager_name;
 
     public Task() {
     }
 
-    public Task(String taskName, Date begin, Date end, String desc, String manager_name) {
+
+    public Task(int id, String taskName, String begin, String end, String desc, String manager_name) {
+        this.id = id;
+        this.taskName = taskName;
+        this.begin = begin;
+        this.end = end;
+        this.desc = desc;
+        this.manager_name = manager_name;
+    }
+
+    public Task(String taskName, String begin, String end, String desc, String manager_name) {
         this.taskName = taskName;
         this.begin = begin;
         this.end = end;
@@ -38,19 +47,19 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public Date getBegin() {
+    public String getBegin() {
         return begin;
     }
 
-    public void setBegin(Date begin) {
+    public void setBegin(String begin) {
         this.begin = begin;
     }
 
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 

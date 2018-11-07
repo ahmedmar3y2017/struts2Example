@@ -7,7 +7,6 @@ import Services.loginTransactions;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class loginAction extends ActionSupport implements SessionAware {
-    List<Task> tasks;
+
     User user;
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
@@ -66,13 +65,9 @@ public class loginAction extends ActionSupport implements SessionAware {
 
         if (s) {
 
-            // Get list Of Tasks
-            tasks = TaskTransaction.getAllTasks();
-            System.out.println("List is : "+tasks);
 
 
             sessionAttributes.put("USER", user);
-            sessionAttributes.put("tasks", tasks);
 
             return SUCCESS;
 
@@ -95,11 +90,5 @@ public class loginAction extends ActionSupport implements SessionAware {
         this.user = user;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
 }

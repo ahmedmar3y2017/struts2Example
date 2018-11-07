@@ -12,9 +12,15 @@
       </configuration>
       <facet type="Struts2" name="Struts 2">
         <configuration>
-          <fileset id="s2fileset" name="Default File Set " removed="false">
+          <fileset id="s2fileset2" name="My Fileset 2" removed="false">
             <file>file://$MODULE_DIR$/src/struts.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-convention-plugin-2.1.8.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-core-2.1.8.1.jar!/struts-default.xml</file>
             <file>jar://$MODULE_DIR$/lib/struts2-core.jar!/struts-default.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-dojo-plugin-2.1.8.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-embeddedjsp-plugin-2.1.8.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-json-plugin-2.1.8.1.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/out/artifacts/struts2Example_war_exploded/WEB-INF/lib/struts2-tiles-plugin-2.1.8.1.jar!/struts-plugin.xml</file>
           </fileset>
           <propertiesKeys disabled="false" />
         </configuration>
@@ -28,7 +34,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jdbc" level="project" />
-    <orderEntry type="library" name="antlr-2.7.2" level="project" />
+    <orderEntry type="library" name="commons-fileupload" level="project" />
   </component>
 </module>
