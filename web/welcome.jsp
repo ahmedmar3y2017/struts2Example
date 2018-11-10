@@ -127,6 +127,7 @@
             <!--Header-->
             <div class="modal-header text-center">
                 <h4 class="modal-title white-text w-100 font-weight-bold py-2">Edit Task </h4>
+                <h5 id="editMessage" class="modal-title white-text w-100 font-weight-bold py-2"> </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
@@ -137,7 +138,8 @@
 
 
                 <form id="my_editForm" method="post" action="updateTask">
-
+                    <%--// hidden value for id--%>
+                    <input type="hidden" id="editTaskid" name="editTaskid" value="">
 
                     <div class="form-group col-lg-12">
                         <label>Task Name</label>
@@ -146,12 +148,12 @@
 
                     <div class="form-group col-lg-6">
                         <label>Begin Date</label>
-                        <input type="date" name="editBegin" class="form-control" id="editBegin" value="">
+                        <input type="text" name="editBegin" class="form-control" id="editBegin" value="">
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label>End Date</label>
-                        <input type="date" name="editEnd" class="form-control" id="editEnd" value="">
+                        <input type="text" name="editEnd" class="form-control" id="editEnd" value="">
                     </div>
 
 
@@ -166,7 +168,8 @@
                     <div class="col-sm-6">
                         <%--<input type="submit" name="button" id="button" class="btn btn-primary">Save Task</input>--%>
 
-                        <button type="submit" class="btn btn-outline-warning waves-effect" name="submit">Edit Form <i
+                        <button type="submit" class="btn btn-outline-warning waves-effect" id="editSubmit"
+                                name="submit">Edit Form <i
                                 class="fa fa-paper-plane-o ml-1"></i></button>
 
                     </div>

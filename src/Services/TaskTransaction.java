@@ -48,41 +48,52 @@ public class TaskTransaction {
 
     // --------- Not Used Yet --------------
 
-    public static String saveTask(Task task) throws SQLException, Exception {
+    public static Task saveTask(String name, String begin, String end, String desc, String manager_name) throws SQLException, Exception {
         try {
 
-            System.out.println(task.getTaskName());
+            System.out.println("Name is : " + name);
             String sql = "INSERT INTO task (`name`, `begin` ,`end` ,`desc` , `manager_name`) VALUES (?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, task.getTaskName());
-            ps.setString(2, task.getBegin());
-            ps.setString(3, task.getEnd());
-            ps.setString(4, task.getDesc());
-            ps.setString(5, task.getManager_name());
-            ps.executeUpdate();
-            return "Registration Successful";
+            ps.setString(1, name);
+            ps.setString(2, begin);
+            ps.setString(3, end);
+            ps.setString(4, desc);
+            ps.setString(5, manager_name);
+            System.out.println("effected row is : " + ps.executeUpdate());
+
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+
+                    return new Task(generatedKeys.getInt(1), name, begin, end, desc, manager_name, "Succfully saved");
+
+                } else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
-            return e.getMessage();
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
+
+        return null;
     }
 
 
-    public static String updateTask(Task task)
+    public static String updateTask(int id, String taskName, String begin, String end, String desc, String manager_name)
             throws SQLException, Exception {
         try {
-            String sql = "UPDATE task SET name=?,begin =?,end =?, desc =? ,manager_name =? WHERE id=?";
+            String sql = "UPDATE task SET `name`=?,`begin` =?,`end` =?, `desc` =? ,`manager_name` =? WHERE `id`=?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, task.getTaskName());
-            ps.setString(2, task.getBegin());
-            ps.setString(3, task.getEnd());
-            ps.setString(4, task.getDesc());
-            ps.setString(5, task.getManager_name());
-            ps.setInt(6, task.getId());
+            ps.setString(1, taskName);
+            ps.setString(2, begin);
+            ps.setString(3, end);
+            ps.setString(4, desc);
+            ps.setString(5, manager_name);
+            ps.setInt(6, id);
 
             ps.executeUpdate();
             return "Update Successful";
@@ -91,7 +102,7 @@ public class TaskTransaction {
             return e.getMessage();
         } finally {
             if (connection != null) {
-                connection.close();
+//                connection.close();
             }
         }
     }

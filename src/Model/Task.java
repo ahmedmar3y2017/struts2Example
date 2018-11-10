@@ -4,15 +4,27 @@ package Model;
 public class Task {
 
     private int id;
-    private String taskName ;
+    private String taskName;
     private String begin;
-    private String end ;
+    private String end;
     private String desc;
     private String manager_name;
+    private String message;
+
 
     public Task() {
     }
 
+
+    public Task(int id, String taskName, String begin, String end, String desc, String manager_name, String message) {
+        this.id = id;
+        this.taskName = taskName;
+        this.begin = begin;
+        this.end = end;
+        this.desc = desc;
+        this.manager_name = manager_name;
+        this.message = message;
+    }
 
     public Task(int id, String taskName, String begin, String end, String desc, String manager_name) {
         this.id = id;
@@ -21,7 +33,9 @@ public class Task {
         this.end = end;
         this.desc = desc;
         this.manager_name = manager_name;
+
     }
+
 
     public Task(String taskName, String begin, String end, String desc, String manager_name) {
         this.taskName = taskName;
@@ -77,5 +91,14 @@ public class Task {
 
     public void setManager_name(String manager_name) {
         this.manager_name = manager_name;
+    }
+
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

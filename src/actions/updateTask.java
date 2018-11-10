@@ -1,45 +1,38 @@
 package actions;
 
-import Model.Task;
-import Model.User;
 import Services.TaskTransaction;
-import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 
-import java.util.Map;
-
-public class insertTaskAction extends ActionSupport {
-
-    private String message;
-
-
-    // variables
+public class updateTask extends ActionSupport {
+    private int id;
     private String taskName;
+    private String desc;
     private String begin;
     private String end;
-    private String desc;
     private String manager_name;
-    private Task task;
+    private String message;
+
 
     @Override
     public String execute() throws Exception {
 
 
-        this.task = TaskTransaction.saveTask(taskName, begin, end, desc, manager_name);
+        System.out.println(id + "    " + taskName + "    " + manager_name);
+
+        this.message = TaskTransaction.updateTask(id, taskName, begin, end, desc, manager_name);
+
 
         return "SUCCESS";
 
     }
 
-    public String getMessage() {
-        return message;
+    public int getId() {
+        return id;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setId(int id) {
+        this.id = id;
     }
-
 
     public String getTaskName() {
         return taskName;
@@ -47,6 +40,14 @@ public class insertTaskAction extends ActionSupport {
 
     public void setTaskName(String taskName) {
         this.taskName = taskName;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getBegin() {
@@ -65,14 +66,6 @@ public class insertTaskAction extends ActionSupport {
         this.end = end;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
     public String getManager_name() {
         return manager_name;
     }
@@ -81,12 +74,11 @@ public class insertTaskAction extends ActionSupport {
         this.manager_name = manager_name;
     }
 
-
-    public Task getTask() {
-        return task;
+    public String getMessage() {
+        return message;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
